@@ -15,10 +15,11 @@ struct RestaurantListView: View {
     var body: some View {
         List {
             ForEach(restaurantNames.indices, id: \.self) { index in
-                HStack(alignment: .top, spacing: 20) {
+                VStack(alignment: .leading) {
                     Image(restaurantImages[index])
                         .resizable()
-                        .frame(width: 120, height: 118)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 160)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                     VStack(alignment: .leading){
                         Text(restaurantNames[index])
@@ -31,10 +32,15 @@ struct RestaurantListView: View {
                             .font(.system(.subheadline, design: .rounded))
                             .foregroundStyle(.gray)
                     }
+                    .padding(.leading, 10)
                 }
+                .listRowInsets(.init())
             }
             .listRowSeparator(.hidden)
         }
+        .padding()
+        .listRowSpacing(20)
+        .environment(\.defaultMinListRowHeight, 0 )
         .listStyle(.plain)
     }
 }
