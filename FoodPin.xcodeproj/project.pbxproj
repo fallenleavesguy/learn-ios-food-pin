@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A110534E2B879DB200C58FEB /* FoodPinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A110534D2B879DB200C58FEB /* FoodPinApp.swift */; };
-		A11053502B879DB200C58FEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A110534F2B879DB200C58FEB /* ContentView.swift */; };
+		A11053502B879DB200C58FEB /* RestaurantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A110534F2B879DB200C58FEB /* RestaurantListView.swift */; };
 		A11053522B879DB300C58FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A11053512B879DB300C58FEB /* Assets.xcassets */; };
 		A11053552B879DB300C58FEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A11053542B879DB300C58FEB /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		A110534A2B879DB200C58FEB /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A110534D2B879DB200C58FEB /* FoodPinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPinApp.swift; sourceTree = "<group>"; };
-		A110534F2B879DB200C58FEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A110534F2B879DB200C58FEB /* RestaurantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListView.swift; sourceTree = "<group>"; };
 		A11053512B879DB300C58FEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A11053542B879DB300C58FEB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,7 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				A110534D2B879DB200C58FEB /* FoodPinApp.swift */,
-				A110534F2B879DB200C58FEB /* ContentView.swift */,
+				A110534F2B879DB200C58FEB /* RestaurantListView.swift */,
 				A11053512B879DB300C58FEB /* Assets.xcassets */,
 				A11053532B879DB300C58FEB /* Preview Content */,
 			);
@@ -137,7 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A11053502B879DB200C58FEB /* ContentView.swift in Sources */,
+				A11053502B879DB200C58FEB /* RestaurantListView.swift in Sources */,
 				A110534E2B879DB200C58FEB /* FoodPinApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +280,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +310,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
