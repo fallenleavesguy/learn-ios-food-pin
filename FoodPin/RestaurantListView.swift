@@ -14,14 +14,14 @@ struct RestaurantListView: View {
     var restaurantImages = ["cafedeadend", "homei", "teakha", "cafeloisl", "petiteoyster", "forkee", "posatelier", "bourkestreetbakery", "haigh", "palomino", "upstate", "traif", "graham", "waffleandwolf", "fiveleaves", "cafelore", "confessional", "barrafina", "donostia", "royaloak", "cask"]
     
     var restaurantLocations = ["Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Sydney", "Sydney", "Sydney", "New York", "New York", "New York", "New York", "New York", "New York", "New York", "London", "London", "London", "London"]
-        
+    
     var restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian / Causual Drink", "French", "Bakery", "Bakery", "Chocolate", "Cafe", "American / Seafood", "American", "American", "Breakfast & Brunch", "Coffee & Tea", "Coffee & Tea", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
     
     var body: some View {
         List {
             ForEach(restaurantNames.indices, id: \.self) { index in
                 BasicTextImageRow(
-//                FullImageRow(
+                    //                FullImageRow(
                     imageName: restaurantImages[index],
                     name: restaurantNames[index],
                     type: restaurantTypes[index],
@@ -51,7 +51,7 @@ struct FullImageRow: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-           Image(imageName)
+            Image(imageName)
                 .resizable()
                 .scaledToFill()
                 .frame(height: 200)
@@ -75,11 +75,12 @@ struct FullImageRow: View {
 }
 
 struct BasicTextImageRow: View {
+    @State private var showOptions = false
     var imageName: String
     var name: String
     var type: String
     var location: String
-
+    
     var body: some View {
         HStack(alignment: .top, spacing: 20) {
             Image(imageName)
@@ -97,6 +98,33 @@ struct BasicTextImageRow: View {
                 Text(location)
                     .font(.system(.subheadline, design: .rounded))
                     .foregroundStyle(.gray)
+            }
+        }
+        .onTapGesture {
+            showOptions.toggle()
+        }
+//        .actionSheet(isPresented: $showOptions, content: {
+//            ActionSheet(
+//                title: Text("Select a color"),
+//                buttons: [
+//                    .default(Text("Red")) {
+//                    },
+//                    .default(Text("Green")) {
+//                    },
+//                
+//                    .default(Text("Blue")) {
+//                    },
+//                ]
+//            )
+//        })
+        .confirmationDialog("What do you want to do?", isPresented: $showOptions, titleVisibility: .visible) {
+            
+            Button("Reserve a table") {
+                
+            }
+            
+            Button("Mark as favorite") {
+                
             }
         }
     }
