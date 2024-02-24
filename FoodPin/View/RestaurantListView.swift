@@ -36,7 +36,7 @@ struct RestaurantListView: View {
     var body: some View {
         List {
             ForEach(restaurants.indices, id: \.self) { index in
-                BasicTextImageRow(imageName: restaurants[index].image, name: restaurants[index].name, type: restaurants[index].type, location: restaurants[index].location, isFavorite: $restaurants[index].isFavorite)
+                BasicTextImageRow(restaurant: $restaurants[index])
             }
             
             .listRowSeparator(.hidden)
@@ -55,7 +55,7 @@ struct RestaurantListView: View {
 }
 
 #Preview("BasicTextImageRow", traits: .sizeThatFitsLayout) {
-    BasicTextImageRow(imageName: "cafedeadend", name: "Cafe Deadend", type: "Cafe", location: "Hong Kong", isFavorite: .constant(true))
+    BasicTextImageRow(restaurant: .constant(Restaurant(name: "Cafe Deadend", type: "Cafe", location: "Hong Kong", image: "cafedeadend", isFavorite: true)))
 }
 
 #Preview("FullImageRow", traits: .sizeThatFitsLayout) {
@@ -63,36 +63,35 @@ struct RestaurantListView: View {
 }
 
 struct BasicTextImageRow: View {
+    // MARK: - State variables
+    
     @State private var showOptions = false
     @State private var showError = false
     
-    var imageName: String
-    var name: String
-    var type: String
-    var location: String
+    // MARK: - Binding
     
-    @Binding var isFavorite: Bool
+    @Binding var restaurant: Restaurant
     
     var body: some View {
         HStack(alignment: .top, spacing: 20) {
-            Image(imageName)
+            Image(restaurant.image)
                 .resizable()
                 .frame(width: 120, height: 118)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
             
             VStack(alignment: .leading) {
-                Text(name)
+                Text(restaurant.name)
                     .font(.system(.title2, design: .rounded))
                 
-                Text(type)
+                Text(restaurant.type)
                     .font(.system(.body, design: .rounded))
                 
-                Text(location)
+                Text(restaurant.location)
                     .font(.system(.subheadline, design: .rounded))
                     .foregroundStyle(.gray)
             }
             
-            if isFavorite {
+            if restaurant.isFavorite {
                 Spacer()
                 
                 Image(systemName: "heart.fill")
@@ -108,8 +107,8 @@ struct BasicTextImageRow: View {
                 self.showError.toggle()
             }
             
-            Button(isFavorite ? "Remove from favorites" : "Mark as favorite") {
-                self.isFavorite.toggle()
+            Button(restaurant.isFavorite ? "Remove from favorites" : "Mark as favorite") {
+                self.restaurant.isFavorite.toggle()
             }
         }
         .alert("Not yet available", isPresented: $showError) {

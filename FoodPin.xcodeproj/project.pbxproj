@@ -34,6 +34,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A1A28F4D2B89F07F00D09418 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F46BCEC02AC291B900CD061F /* RestaurantListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A1A28F4E2B89F09B00D09418 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A1A28F4B2B89E51700D09418 /* Restaurant.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F46BCEB22AC291B900CD061F = {
 			isa = PBXGroup;
 			children = (
@@ -53,11 +69,11 @@
 		F46BCEBD2AC291B900CD061F /* FoodPin */ = {
 			isa = PBXGroup;
 			children = (
+				A1A28F4E2B89F09B00D09418 /* Model */,
+				A1A28F4D2B89F07F00D09418 /* View */,
 				F46BCEBE2AC291B900CD061F /* FoodPinApp.swift */,
-				F46BCEC02AC291B900CD061F /* RestaurantListView.swift */,
 				F46BCEC22AC291BA00CD061F /* Assets.xcassets */,
 				F46BCEC42AC291BA00CD061F /* Preview Content */,
-				A1A28F4B2B89E51700D09418 /* Restaurant.swift */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";
@@ -276,6 +292,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodPin/Preview Content\"";
+				DEVELOPMENT_TEAM = 7NYZL28FP4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -288,7 +305,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.appcoda.FoodPin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.donghs.FoodPin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -304,6 +321,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodPin/Preview Content\"";
+				DEVELOPMENT_TEAM = 7NYZL28FP4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -316,7 +334,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.appcoda.FoodPin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.donghs.FoodPin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
