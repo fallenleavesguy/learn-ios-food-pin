@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RestaurantListView: View {
-    
+    @State var restaurantIsFavorites = Array(repeating: false, count: 21)
     var restaurantNames = ["Cafe Deadend", "Homei", "Teakha", "Cafe Loisl", "Petite Oyster", "For Kee Restaurant", "Po's Atelier", "Bourke Street Bakery", "Haigh's Chocolate", "Palomino Espresso", "Upstate", "Traif", "Graham Avenue Meats", "Waffle & Wolf", "Five Leaves", "Cafe Lore", "Confessional", "Barrafina", "Donostia", "Royal Oak", "CASK Pub and Kitchen"]
     
     var restaurantImages = ["cafedeadend", "homei", "teakha", "cafeloisl", "petiteoyster", "forkee", "posatelier", "bourkestreetbakery", "haigh", "palomino", "upstate", "traif", "graham", "waffleandwolf", "fiveleaves", "cafelore", "confessional", "barrafina", "donostia", "royaloak", "cask"]
@@ -25,7 +25,8 @@ struct RestaurantListView: View {
                     imageName: restaurantImages[index],
                     name: restaurantNames[index],
                     type: restaurantTypes[index],
-                    location: restaurantLocations[index]
+                    location: restaurantLocations[index],
+                    isFavorite: $restaurantIsFavorites[index]
                 )
             }
             .listRowSeparator(.hidden)
@@ -82,6 +83,7 @@ struct BasicTextImageRow: View {
     var name: String
     var type: String
     var location: String
+    @Binding var isFavorite: Bool
     
     var body: some View {
         HStack(alignment: .top, spacing: 20) {
@@ -100,6 +102,13 @@ struct BasicTextImageRow: View {
                 Text(location)
                     .font(.system(.subheadline, design: .rounded))
                     .foregroundStyle(.gray)
+            }
+            
+            if isFavorite {
+                Spacer()
+                
+                Image(systemName: "heart.fill")
+                    .foregroundColor(.yellow)
             }
         }
         .onTapGesture {
@@ -126,7 +135,7 @@ struct BasicTextImageRow: View {
             }
             
             Button("Mark as favorite") {
-                
+                self.isFavorite.toggle()
             }
         }
         .alert("Not yet available", isPresented: $showError) {
