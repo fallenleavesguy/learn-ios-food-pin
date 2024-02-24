@@ -76,6 +76,8 @@ struct FullImageRow: View {
 
 struct BasicTextImageRow: View {
     @State private var showOptions = false
+    @State private var showError = false
+
     var imageName: String
     var name: String
     var type: String
@@ -120,12 +122,17 @@ struct BasicTextImageRow: View {
         .confirmationDialog("What do you want to do?", isPresented: $showOptions, titleVisibility: .visible) {
             
             Button("Reserve a table") {
-                
+                self.showError.toggle()
             }
             
             Button("Mark as favorite") {
                 
             }
+        }
+        .alert("Not yet available", isPresented: $showError) {
+            Button("OK") {}
+        } message: {
+            Text("Sorry, this feature is not available yet. Please retry later.")
         }
     }
 }
