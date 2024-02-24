@@ -20,8 +20,8 @@ struct RestaurantListView: View {
     var body: some View {
         List {
             ForEach(restaurantNames.indices, id: \.self) { index in
-                BasicTextImageRow(
-                    //                FullImageRow(
+//                BasicTextImageRow(
+                                    FullImageRow(
                     imageName: restaurantImages[index],
                     name: restaurantNames[index],
                     type: restaurantTypes[index],
@@ -36,10 +36,13 @@ struct RestaurantListView: View {
 }
 
 struct FullImageRow: View {
+    @State private var showOptions = false
+    @State private var showError = false
     var imageName: String
     var name: String
     var type: String
     var location: String
+    @Binding var isFavorite: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -49,19 +52,47 @@ struct FullImageRow: View {
                 .frame(height: 200)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
             
-            VStack(alignment: .leading) {
-                Text(name)
-                    .font(.system(.title2, design: .rounded))
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(name)
+                        .font(.system(.title2, design: .rounded))
+                    
+                    Text(type)
+                        .font(.system(.body, design: .rounded))
+                    
+                    Text(location)
+                        .font(.system(.body, design: .rounded))
+                        .foregroundStyle(.gray)
+                }
+                .padding(.horizontal)
+                .padding(.bottom)
                 
-                Text(type)
-                    .font(.system(.body, design: .rounded))
-                
-                Text(location)
-                    .font(.system(.body, design: .rounded))
-                    .foregroundStyle(.gray)
+                if isFavorite {
+                    Spacer()
+                    
+                    Image(systemName: "heart.fill")
+                        .foregroundStyle(.yellow)
+                        .padding(.horizontal)
+                }
             }
-            .padding(.horizontal)
-            .padding(.bottom)
+        }
+        .onTapGesture {
+            showOptions.toggle()
+        }
+        .confirmationDialog("What do you want to do?", isPresented: $showOptions, titleVisibility: .visible) {
+            
+            Button("Reserve a table") {
+                self.showError.toggle()
+            }
+            
+            Button("Mark as favorite") {
+                self.isFavorite.toggle()
+            }
+        }
+        .alert("Not yet available", isPresented: $showError) {
+            Button("OK") {}
+        } message: {
+            Text("Sorry, this feature is not available yet. Please retry later.")
         }
     }
 }
@@ -152,5 +183,5 @@ struct BasicTextImageRow: View {
 }
 
 #Preview("FullImageRow", traits: .sizeThatFitsLayout) {
-    FullImageRow(imageName: "cafedeadend", name: "CafeDeadend", type: "Cafe", location: "Hong Kong")
+    FullImageRow(imageName: "cafedeadend", name: "CafeDeadend", type: "Cafe", location: "Hong Kong", isFavorite: .constant(true))
 }
