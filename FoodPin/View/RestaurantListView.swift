@@ -37,8 +37,21 @@ struct RestaurantListView: View {
         List {
             ForEach(restaurants.indices, id: \.self) { index in
                 BasicTextImageRow(restaurant: $restaurants[index])
+//                    .swipeActions(edge: .leading, allowsFullSwipe: false) {
+//                        Button(action: {}, label: {
+//                            Image(systemName: "heart")
+//                        })
+//                        .tint(.green)
+//                        
+//                        Button(action: {}, label: {
+//                            Image(systemName: "square.and.arrow.up")
+//                        })
+//                        .tint(.orange)
+//                    }
             }
-            
+            .onDelete(perform: { indexSet in
+                restaurants.remove(atOffsets: indexSet)
+            })
             .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
@@ -98,19 +111,39 @@ struct BasicTextImageRow: View {
                     .foregroundStyle(.yellow)
             }
         }
-        .onTapGesture {
-            showOptions.toggle()
-        }
-        .confirmationDialog("What do you want to do?", isPresented: $showOptions, titleVisibility: .visible) {
-            
-            Button("Reserve a table") {
+        .contextMenu {
+            Button(action: {
                 self.showError.toggle()
-            }
+            }, label: {
+                HStack {
+                    Text("Reserve a table")
+                    Image(systemName: "phone")
+                }
+            })
             
-            Button(restaurant.isFavorite ? "Remove from favorites" : "Mark as favorite") {
+            Button(action: {
                 self.restaurant.isFavorite.toggle()
-            }
+            }, label: {
+                HStack {
+                    Text(restaurant.isFavorite ? "Remove from favorites" : "Mark as favorite")
+                    Image(systemName: "heart")
+                }
+            })
+            
         }
+        //        .onTapGesture {
+//            showOptions.toggle()
+//        }
+//        .confirmationDialog("What do you want to do?", isPresented: $showOptions, titleVisibility: .visible) {
+//            
+//            Button("Reserve a table") {
+//                self.showError.toggle()
+//            }
+//            
+//            Button(restaurant.isFavorite ? "Remove from favorites" : "Mark as favorite") {
+//                self.restaurant.isFavorite.toggle()
+//            }
+//        }
         .alert("Not yet available", isPresented: $showError) {
             Button("OK") {}
         } message: {
