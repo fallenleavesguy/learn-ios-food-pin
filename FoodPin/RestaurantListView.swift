@@ -35,15 +35,6 @@ struct RestaurantListView: View {
     }
 }
 
-#Preview {
-    RestaurantListView()
-}
-
-#Preview("Dark mode") {
-    RestaurantListView()
-        .preferredColorScheme(.dark)
-}
-
 struct FullImageRow: View {
     var imageName: String
     var name: String
@@ -144,4 +135,22 @@ struct BasicTextImageRow: View {
             Text("Sorry, this feature is not available yet. Please retry later.")
         }
     }
+}
+
+#Preview {
+    RestaurantListView()
+}
+
+#Preview("Dark mode") {
+    RestaurantListView()
+        .preferredColorScheme(.dark)
+}
+
+
+#Preview("BasicTextImageRow", traits: .sizeThatFitsLayout) {
+    BasicTextImageRow(imageName: "cafedeadend", name: "CafeDeadend", type: "Cafe", location: "Hong Kong", isFavorite: .constant(true))
+}
+
+#Preview("FullImageRow", traits: .sizeThatFitsLayout) {
+    FullImageRow(imageName: "cafedeadend", name: "CafeDeadend", type: "Cafe", location: "Hong Kong")
 }
