@@ -20,8 +20,8 @@ struct RestaurantListView: View {
     var body: some View {
         List {
             ForEach(restaurantNames.indices, id: \.self) { index in
-//                BasicTextImageRow(
-                                    FullImageRow(
+                BasicTextImageRow(
+//                                    FullImageRow(
                     imageName: restaurantImages[index],
                     name: restaurantNames[index],
                     type: restaurantTypes[index],
@@ -85,7 +85,7 @@ struct FullImageRow: View {
                 self.showError.toggle()
             }
             
-            Button("Mark as favorite") {
+            Button(isFavorite ? "Remove from favorites" : "Mark as favorite") {
                 self.isFavorite.toggle()
             }
         }
@@ -156,7 +156,7 @@ struct BasicTextImageRow: View {
                 self.showError.toggle()
             }
             
-            Button("Mark as favorite") {
+            Button(isFavorite ? "Remove from favorites" : "Mark as favorite") {
                 self.isFavorite.toggle()
             }
         }
