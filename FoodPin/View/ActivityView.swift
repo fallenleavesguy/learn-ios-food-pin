@@ -1,3 +1,10 @@
+//
+//  ActivityView.swift
+//  FoodPin
+//
+//  Created by Simon Ng on 27/9/2023.
+//
+
 import SwiftUI
 
 struct ActivityView: UIViewControllerRepresentable {
@@ -7,7 +14,6 @@ struct ActivityView: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> some UIViewController {
         let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
-        
         return activityController
     }
     
