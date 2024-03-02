@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A17E77072B92F72B00D92DFB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E77062B92F72B00D92DFB /* MapView.swift */; };
 		F46BCEBF2AC291B900CD061F /* FoodPinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46BCEBE2AC291B900CD061F /* FoodPinApp.swift */; };
 		F46BCEC12AC291B900CD061F /* RestaurantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46BCEC02AC291B900CD061F /* RestaurantListView.swift */; };
 		F46BCEC32AC291BA00CD061F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46BCEC22AC291BA00CD061F /* Assets.xcassets */; };
@@ -18,10 +17,10 @@
 		F46BCED82AC5439B00CD061F /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F46BCED62AC5439B00CD061F /* Nunito-Bold.ttf */; };
 		F46BCED92AC5439B00CD061F /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F46BCED72AC5439B00CD061F /* Nunito-Regular.ttf */; };
 		F46BCEDD2AC675E100CD061F /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46BCEDC2AC675E100CD061F /* UIColor+Ext.swift */; };
+		F46BCEDF2AC68C4D00CD061F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46BCEDE2AC68C4D00CD061F /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A17E77062B92F72B00D92DFB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		F46BCEBB2AC291B900CD061F /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46BCEBE2AC291B900CD061F /* FoodPinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPinApp.swift; sourceTree = "<group>"; };
 		F46BCEC02AC291B900CD061F /* RestaurantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListView.swift; sourceTree = "<group>"; };
@@ -34,6 +33,7 @@
 		F46BCED72AC5439B00CD061F /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		F46BCEDA2AC5458400CD061F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F46BCEDC2AC675E100CD061F /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		F46BCEDE2AC68C4D00CD061F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 				F46BCEC02AC291B900CD061F /* RestaurantListView.swift */,
 				F46BCED02AC4289200CD061F /* ActivityView.swift */,
 				F46BCED22AC51CBF00CD061F /* RestaurantDetailView.swift */,
-				A17E77062B92F72B00D92DFB /* MapView.swift */,
+				F46BCEDE2AC68C4D00CD061F /* MapView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -202,7 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A17E77072B92F72B00D92DFB /* MapView.swift in Sources */,
+				F46BCEDF2AC68C4D00CD061F /* MapView.swift in Sources */,
 				F46BCEC12AC291B900CD061F /* RestaurantListView.swift in Sources */,
 				F46BCED32AC51CBF00CD061F /* RestaurantDetailView.swift in Sources */,
 				F46BCED12AC4289200CD061F /* ActivityView.swift in Sources */,

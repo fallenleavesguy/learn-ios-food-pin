@@ -2,7 +2,7 @@
 //  MapView.swift
 //  FoodPin
 //
-//  Created by donghs on 2024/3/2.
+//  Created by Simon Ng on 29/9/2023.
 //
 
 import SwiftUI
@@ -10,28 +10,34 @@ import MapKit
 
 struct MapView: View {
     var location: String = ""
+    var interactionMode: MapInteractionModes = .all
     
     @State private var position: MapCameraPosition = .automatic
     @State private var markerLocation = CLLocation()
     
     var body: some View {
-        Map(position: $position) {
-            if (location.count >= 0) {
-                Marker(location, coordinate: markerLocation.coordinate)
-                    .tint(.red)
-            }
+        
+        Map(position: $position, interactionModes: interactionMode) {
+            Marker("", coordinate: markerLocation.coordinate)
+                .tint(.red)
         }
         .task {
             convertAddress(location: location)
         }
+        
+    
     }
     
     private func convertAddress(location: String) {
-        let geoCoder = CLGeocoder()
         
-        geoCoder.geocodeAddressString(location) { placemarks, error in
+        print("Calling convert address...")
+        
+        // Get location
+        let geoCoder = CLGeocoder()
+
+        geoCoder.geocodeAddressString(location, completionHandler: { placemarks, error in
             if let error = error {
-                print("failed to fetch geo location of string: ", error.localizedDescription)
+                print(error.localizedDescription)
                 return
             }
             
@@ -40,15 +46,16 @@ struct MapView: View {
                 return
             }
             
+            print(location.coordinate)
+            
             let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.0015, longitudeDelta: 0.0015))
             
             self.position = .region(region)
             self.markerLocation = location
-        }
+        })
     }
 }
 
 #Preview {
-    //    MapView(location: "54 Frith Street London W1D 4SL United Kingdom")
-    MapView(location: "上海东方明珠")
+    MapView(location: "广州塔")
 }
