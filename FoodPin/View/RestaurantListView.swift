@@ -37,7 +37,10 @@ struct RestaurantListView: View {
             List {
                 ForEach(restaurants.indices, id: \.self) { index in
                     ZStack(alignment: .leading) {
-                        NavigationLink(destination: RestaurantDetailView(restaurant: restaurants[index])) {
+                        NavigationLink {
+                            RestaurantDetailView(restaurant: restaurants[index])
+                                .toolbarBackground(.hidden, for: .navigationBar)
+                        } label: {
                             EmptyView()
                         }
                         .opacity(0)

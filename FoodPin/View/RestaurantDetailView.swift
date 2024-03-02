@@ -12,6 +12,11 @@ struct RestaurantDetailView: View {
     
     var restaurant: Restaurant
     
+    init(restaurant: Restaurant) {
+        self.restaurant = restaurant
+        print("creating restaurant detail view")
+    }
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -65,6 +70,10 @@ struct RestaurantDetailView: View {
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.horizontal)
+                MapView(location: restaurant.location)
+                    .frame(height: 300)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .padding()
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -84,6 +93,7 @@ struct RestaurantDetailView: View {
 #Preview {
     NavigationStack {
         RestaurantDetailView(restaurant: Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "G/F, 72 Po Hing Fong, Sheung Wan, Hong Kong", phone: "232-923423", description: "Searching for great breakfast eateries and coffee? This place is for you. We open at 6:30 every morning, and close at 9 PM. We offer espresso and espresso based drink, such as capuccino, cafe latte, piccolo and many more. Come over and enjoy a great meal.", image: "cafedeadend", isFavorite: true))
+            .toolbarBackground(.hidden, for: .navigationBar)
 //            .environment(\.dynamicTypeSize, .xxxLarge)
     }
     .tint(.white)
