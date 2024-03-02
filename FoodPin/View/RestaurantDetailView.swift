@@ -81,7 +81,9 @@ struct RestaurantDetailView: View {
                 }
                 
                 Button {
-                    self.showReview.toggle()
+                    withAnimation(.easeIn(duration: 0.3)) {
+                        self.showReview.toggle()
+                    }
                 } label: {
                     Text("Rate it")
                         .font(.system(.headline, design: .rounded))
@@ -109,7 +111,7 @@ struct RestaurantDetailView: View {
         .overlay(
             self.showReview ?
             ZStack {
-                ReviewView(restaurant: restaurant)
+                ReviewView(isDisplayed: $showReview, restaurant: restaurant)
             }
             : nil
         )
