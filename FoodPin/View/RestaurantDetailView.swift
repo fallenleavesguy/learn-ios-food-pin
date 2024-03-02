@@ -70,10 +70,16 @@ struct RestaurantDetailView: View {
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.horizontal)
-                MapView(location: restaurant.location)
-                    .frame(height: 300)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                NavigationLink {
+                    MapView(location: restaurant.location)
+                        .toolbarBackground(.hidden, for: .navigationBar)
+                        .ignoresSafeArea()
+                } label: {
+                    MapView(location: restaurant.location)
+                        .frame(height: 300)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
                     .padding()
+                }
             }
         }
         .navigationBarBackButtonHidden(true)

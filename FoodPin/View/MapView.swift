@@ -13,7 +13,7 @@ struct MapView: View {
     
     @State private var position: MapCameraPosition = .automatic
     @State private var markerLocation = CLLocation()
-
+    
     var body: some View {
         Map(position: $position) {
             if (location.count >= 0) {
@@ -21,9 +21,9 @@ struct MapView: View {
                     .tint(.red)
             }
         }
-            .task {
-                convertAddress(location: location)
-            }
+        .task {
+            convertAddress(location: location)
+        }
     }
     
     private func convertAddress(location: String) {
@@ -49,6 +49,6 @@ struct MapView: View {
 }
 
 #Preview {
-//    MapView(location: "54 Frith Street London W1D 4SL United Kingdom")
+    //    MapView(location: "54 Frith Street London W1D 4SL United Kingdom")
     MapView(location: "上海东方明珠")
 }
