@@ -62,6 +62,10 @@ struct ReviewView: View {
                         ),
                         value: showRatings
                     )
+                    .onTapGesture {
+                        self.restaurant.rating = rating
+                        self.isDisplayed = false
+                    }
                 }
             }
         }
