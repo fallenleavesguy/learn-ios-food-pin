@@ -13,7 +13,10 @@ struct RestaurantListView: View {
     
     @Query var restaurants: [Restaurant]
     @State private var showNewRestaurant = false
-    
+    @State private var searchText = ""
+    @State private var searchResult: [Restaurant] = []
+    @State private var isSearchActive = false
+//    
     var body: some View {
         NavigationStack {
             List {
@@ -22,14 +25,15 @@ struct RestaurantListView: View {
                         .resizable()
                         .scaledToFit()
                 } else {
-                    ForEach(restaurants.indices, id: \.self) { index in
+                    let listItems = isSearchActive ? searchResult : restaurants
+                    ForEach(listItems.indices, id: \.self) { index in
                         ZStack(alignment: .leading) {
                             NavigationLink(destination: RestaurantDetailView(restaurant: restaurants[index])) {
                                 EmptyView()
                             }
                             .opacity(0)
                             
-                            BasicTextImageRow(restaurant: restaurants[index])
+                            BasicTextImageRow(restaurant: listItems[index])
                         }
                     }
                     .onDelete(perform: deleteRecord)
@@ -52,6 +56,28 @@ struct RestaurantListView: View {
         .tint(.primary)
         .sheet(isPresented: $showNewRestaurant) {
             NewRestaurantView()
+        }
+        .searchable(text: $searchText, isPresented: $isSearchActive, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search restaurants...")
+        .searchSuggestions({
+            if searchText.isEmpty {
+                let texts = ["Test", "Test2"]
+                
+                ForEach(texts, id: \.self) { suggestion in
+                    Text(suggestion)
+                        .searchCompletion(suggestion)
+                }
+            }
+        })
+        .onChange(of: searchText) { oldValue, newValue in
+            let predicate = #Predicate<Restaurant> {
+                $0.name.contains(newValue) || $0.location.contains(newValue)
+            }
+            
+            let descriptor = FetchDescriptor(predicate: predicate)
+            
+            if let result = try? modelContext.fetch(descriptor) {
+                searchResult = result
+            }
         }
     }
     
