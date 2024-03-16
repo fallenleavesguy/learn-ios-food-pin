@@ -57,5 +57,5 @@ struct MapView: View {
 }
 
 #Preview {
-    MapView(location: "广州塔")
+    MapView(location: "54 Frith Street London W1D 4SL United Kingdom")
 }
