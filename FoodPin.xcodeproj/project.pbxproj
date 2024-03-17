@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A10AD44A2BA6BAB300D958EC /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AD4492BA6BAB300D958EC /* TutorialView.swift */; };
 		A10AD44C2BA7162500D958EC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AD44B2BA7162500D958EC /* MainView.swift */; };
+		A10AD44E2BA720D500D958EC /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AD44D2BA720D500D958EC /* AboutView.swift */; };
 		F4379B6A2ACA98D000CAFAE2 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4379B692ACA98D000CAFAE2 /* ReviewView.swift */; };
 		F4379B732ACD2B7700CAFAE2 /* NewRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4379B722ACD2B7700CAFAE2 /* NewRestaurantView.swift */; };
 		F4379B762ACD50DF00CAFAE2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4379B752ACD50DF00CAFAE2 /* ImagePicker.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		A10AD4492BA6BAB300D958EC /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		A10AD44B2BA7162500D958EC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		A10AD44D2BA720D500D958EC /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		F4379B692ACA98D000CAFAE2 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		F4379B722ACD2B7700CAFAE2 /* NewRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRestaurantView.swift; sourceTree = "<group>"; };
 		F4379B752ACD50DF00CAFAE2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				F4379B722ACD2B7700CAFAE2 /* NewRestaurantView.swift */,
 				A10AD4492BA6BAB300D958EC /* TutorialView.swift */,
 				A10AD44B2BA7162500D958EC /* MainView.swift */,
+				A10AD44D2BA720D500D958EC /* AboutView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				F46BCED12AC4289200CD061F /* ActivityView.swift in Sources */,
 				F4379B732ACD2B7700CAFAE2 /* NewRestaurantView.swift in Sources */,
 				F46BCEDD2AC675E100CD061F /* UIColor+Ext.swift in Sources */,
+				A10AD44E2BA720D500D958EC /* AboutView.swift in Sources */,
 				F47184062AD7F6CF00EFC22E /* RestaurantFormViewModel.swift in Sources */,
 				A10AD44A2BA6BAB300D958EC /* TutorialView.swift in Sources */,
 				F4379B762ACD50DF00CAFAE2 /* ImagePicker.swift in Sources */,
