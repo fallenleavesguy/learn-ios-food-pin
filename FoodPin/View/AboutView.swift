@@ -8,6 +8,14 @@
 import SwiftUI
 
 struct AboutView: View {
+    enum WebLink: String {
+        case rateUs = "https://www.apple.com/ios/app-store"
+        case feedback = "https://www.appcoda.com/contact"
+        case twitter = "https://www.twitter.com/appcodamobile"
+        case facebook = "https://www.facebook.com/appcodamobile"
+        case instagram = "https://www.instagram.com/appcodadotcom"
+    }
+    
     var body: some View {
         NavigationStack {
             List {
@@ -16,7 +24,10 @@ struct AboutView: View {
                     .scaledToFit()
                 
                 Section {
-                    Label("Rate us on App Store", image: "store")
+                    Link(destination: URL(string: WebLink.rateUs.rawValue)!, label: {
+                        Label("Rate us on App Store", image: "store")
+                            .foregroundStyle(.primary)
+                    })
                     
                     Label("Tell us your feedback", image: "chat")
                 }
