@@ -62,7 +62,8 @@ struct AboutView: View {
             .navigationBarTitleDisplayMode(.automatic)
             .sheet(item: $link) { item in
                 if let url = URL(string: item.rawValue) {
-                    WebView(url: url)
+                    SafariView(url: url)
+                        .ignoresSafeArea()
                 }
             }
         }
