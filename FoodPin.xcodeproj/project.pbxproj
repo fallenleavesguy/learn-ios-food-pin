@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10AD44A2BA6BAB300D958EC /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AD4492BA6BAB300D958EC /* TutorialView.swift */; };
 		F4379B6A2ACA98D000CAFAE2 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4379B692ACA98D000CAFAE2 /* ReviewView.swift */; };
 		F4379B732ACD2B7700CAFAE2 /* NewRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4379B722ACD2B7700CAFAE2 /* NewRestaurantView.swift */; };
 		F4379B762ACD50DF00CAFAE2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4379B752ACD50DF00CAFAE2 /* ImagePicker.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A10AD4492BA6BAB300D958EC /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		F4379B692ACA98D000CAFAE2 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		F4379B722ACD2B7700CAFAE2 /* NewRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRestaurantView.swift; sourceTree = "<group>"; };
 		F4379B752ACD50DF00CAFAE2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				F46BCEDE2AC68C4D00CD061F /* MapView.swift */,
 				F4379B692ACA98D000CAFAE2 /* ReviewView.swift */,
 				F4379B722ACD2B7700CAFAE2 /* NewRestaurantView.swift */,
+				A10AD4492BA6BAB300D958EC /* TutorialView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				F4379B732ACD2B7700CAFAE2 /* NewRestaurantView.swift in Sources */,
 				F46BCEDD2AC675E100CD061F /* UIColor+Ext.swift in Sources */,
 				F47184062AD7F6CF00EFC22E /* RestaurantFormViewModel.swift in Sources */,
+				A10AD44A2BA6BAB300D958EC /* TutorialView.swift in Sources */,
 				F4379B762ACD50DF00CAFAE2 /* ImagePicker.swift in Sources */,
 				F46BCEBF2AC291B900CD061F /* FoodPinApp.swift in Sources */,
 				F46BCECD2AC3CC5800CD061F /* Restaurant.swift in Sources */,

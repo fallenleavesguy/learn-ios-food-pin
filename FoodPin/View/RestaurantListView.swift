@@ -16,7 +16,9 @@ struct RestaurantListView: View {
     @State private var searchText = ""
     @State private var searchResult: [Restaurant] = []
     @State private var isSearchActive = false
-//    
+    @State private var showWalkthrough = false
+    @AppStorage("hasViewedWalkthrough") var hasViewedWalkthrough: Bool = false
+//
     var body: some View {
         NavigationStack {
             List {
@@ -78,6 +80,12 @@ struct RestaurantListView: View {
             if let result = try? modelContext.fetch(descriptor) {
                 searchResult = result
             }
+        }
+        .sheet(isPresented: $showWalkthrough, content: {
+            TutorialView()
+        })
+        .onAppear() {
+            showWalkthrough = hasViewedWalkthrough ? false : true
         }
     }
     
