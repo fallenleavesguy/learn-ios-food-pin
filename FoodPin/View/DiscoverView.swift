@@ -31,6 +31,7 @@ struct DiscoverView: View {
                     }
                 }
                 .refreshable {
+                    showLoadingIndicator = true
                     cloudStore.fetchRestaurantWithOperational {
                         showLoadingIndicator = false
                     }

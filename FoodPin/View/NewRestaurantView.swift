@@ -120,6 +120,8 @@ struct NewRestaurantView: View {
         
         
         modelContext.insert(restaurant)
+        let cloudStore = RestaurantCloudStore()
+        cloudStore.saveRecordToCloud(restaurant: restaurant)
     }
 }
 
