@@ -12,6 +12,8 @@
 		A10AD44E2BA720D500D958EC /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AD44D2BA720D500D958EC /* AboutView.swift */; };
 		A10AD4502BA73CD400D958EC /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AD44F2BA73CD400D958EC /* WebView.swift */; };
 		A10AD4522BA7430200D958EC /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AD4512BA7430200D958EC /* SafariView.swift */; };
+		A1DFFE402BB011DD0056C3B0 /* RestaurantCloudStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFFE3F2BB011DD0056C3B0 /* RestaurantCloudStore.swift */; };
+		A1DFFE422BB016190056C3B0 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFFE412BB016190056C3B0 /* DiscoverView.swift */; };
 		F4379B6A2ACA98D000CAFAE2 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4379B692ACA98D000CAFAE2 /* ReviewView.swift */; };
 		F4379B732ACD2B7700CAFAE2 /* NewRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4379B722ACD2B7700CAFAE2 /* NewRestaurantView.swift */; };
 		F4379B762ACD50DF00CAFAE2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4379B752ACD50DF00CAFAE2 /* ImagePicker.swift */; };
@@ -35,6 +37,9 @@
 		A10AD44D2BA720D500D958EC /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		A10AD44F2BA73CD400D958EC /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		A10AD4512BA7430200D958EC /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		A10AD4532BAEE7CB00D958EC /* FoodPin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodPin.entitlements; sourceTree = "<group>"; };
+		A1DFFE3F2BB011DD0056C3B0 /* RestaurantCloudStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCloudStore.swift; sourceTree = "<group>"; };
+		A1DFFE412BB016190056C3B0 /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		F4379B692ACA98D000CAFAE2 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		F4379B722ACD2B7700CAFAE2 /* NewRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRestaurantView.swift; sourceTree = "<group>"; };
 		F4379B752ACD50DF00CAFAE2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -92,6 +97,7 @@
 		F46BCEBD2AC291B900CD061F /* FoodPin */ = {
 			isa = PBXGroup;
 			children = (
+				A10AD4532BAEE7CB00D958EC /* FoodPin.entitlements */,
 				F47184042AD7F6B800EFC22E /* ViewModel */,
 				F4379B742ACD50CE00CAFAE2 /* Util */,
 				F46BCEDB2AC675C500CD061F /* Extensions */,
@@ -128,6 +134,7 @@
 				A10AD44D2BA720D500D958EC /* AboutView.swift */,
 				A10AD44F2BA73CD400D958EC /* WebView.swift */,
 				A10AD4512BA7430200D958EC /* SafariView.swift */,
+				A1DFFE412BB016190056C3B0 /* DiscoverView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -136,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				F46BCECC2AC3CC5800CD061F /* Restaurant.swift */,
+				A1DFFE3F2BB011DD0056C3B0 /* RestaurantCloudStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -250,6 +258,8 @@
 				F46BCEDF2AC68C4D00CD061F /* MapView.swift in Sources */,
 				F46BCEC12AC291B900CD061F /* RestaurantListView.swift in Sources */,
 				F46BCED32AC51CBF00CD061F /* RestaurantDetailView.swift in Sources */,
+				A1DFFE422BB016190056C3B0 /* DiscoverView.swift in Sources */,
+				A1DFFE402BB011DD0056C3B0 /* RestaurantCloudStore.swift in Sources */,
 				F46BCED12AC4289200CD061F /* ActivityView.swift in Sources */,
 				A10AD4502BA73CD400D958EC /* WebView.swift in Sources */,
 				F4379B732ACD2B7700CAFAE2 /* NewRestaurantView.swift in Sources */,
@@ -391,6 +401,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FoodPin/FoodPin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodPin/Preview Content\"";
@@ -423,6 +434,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FoodPin/FoodPin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodPin/Preview Content\"";
