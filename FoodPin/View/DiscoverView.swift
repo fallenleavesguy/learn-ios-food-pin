@@ -30,11 +30,12 @@ struct DiscoverView: View {
             }
             .listStyle(.inset)
             .task {
-                do {
-                    try await cloudStore.fetchRestaurants()
-                } catch {
-                    print(error)
-                }
+//                do {
+//                    try await cloudStore.fetchRestaurants()
+//                } catch {
+//                    print(error)
+//                }
+                cloudStore.fetchRestaurantWithOperational()
             }
             .navigationTitle("Discover")
             .navigationBarTitleDisplayMode(.automatic)
