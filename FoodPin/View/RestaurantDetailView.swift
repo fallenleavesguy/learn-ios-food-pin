@@ -24,6 +24,12 @@ struct RestaurantDetailView: View {
                     .frame(height: 445)
                     .overlay {
                         VStack {
+                            Image(systemName: restaurant.isFavorite ? "heart.fill" : "heart")
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topTrailing)
+                                .padding()
+                                .font(.system(size: 30))
+                                .foregroundStyle(restaurant.isFavorite ? .yellow : .white)
+                                .padding(.top, 40)
                             
                             HStack(alignment: .bottom) {
                                 VStack(alignment: .leading, spacing: 5) {
@@ -104,24 +110,11 @@ struct RestaurantDetailView: View {
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
+            ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
                     dismiss()
                 }) {
                     Text("\(Image(systemName: "chevron.left"))")
-                }
-            }
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    restaurant.isFavorite.toggle()
-                } label: {
-                    Image(systemName: restaurant.isFavorite ? "heart.fill" : "heart")
-//                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topTrailing)
-//                        .padding()
-                        .font(.system(size: 30))
-                        .foregroundStyle(restaurant.isFavorite ? .yellow : .white)
-//                        .padding(.top, 40)
                 }
             }
         }

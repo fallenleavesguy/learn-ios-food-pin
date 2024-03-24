@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct RestaurantListView: View {
+    @AppStorage("hasViewedWalkthrough") var hasViewedWalkthrough: Bool = false
+    
     @Environment(\.modelContext) private var modelContext
     
     @Query var restaurants: [Restaurant]
@@ -17,8 +19,7 @@ struct RestaurantListView: View {
     @State private var searchResult: [Restaurant] = []
     @State private var isSearchActive = false
     @State private var showWalkthrough = false
-    @AppStorage("hasViewedWalkthrough") var hasViewedWalkthrough: Bool = false
-//
+    
     var body: some View {
         NavigationStack {
             List {
@@ -28,9 +29,10 @@ struct RestaurantListView: View {
                         .scaledToFit()
                 } else {
                     let listItems = isSearchActive ? searchResult : restaurants
+                    
                     ForEach(listItems.indices, id: \.self) { index in
                         ZStack(alignment: .leading) {
-                            NavigationLink(destination: RestaurantDetailView(restaurant: restaurants[index])) {
+                            NavigationLink(destination: RestaurantDetailView(restaurant: listItems[index])) {
                                 EmptyView()
                             }
                             .opacity(0)
@@ -56,37 +58,34 @@ struct RestaurantListView: View {
             }
         }
         .tint(.primary)
+        .onAppear() {
+            showWalkthrough = hasViewedWalkthrough ? false : true
+        }
         .sheet(isPresented: $showNewRestaurant) {
             NewRestaurantView()
         }
+        .sheet(isPresented: $showWalkthrough) {
+            TutorialView()
+        }
         .searchable(text: $searchText, isPresented: $isSearchActive, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search restaurants...")
-        .searchSuggestions({
+        .searchSuggestions{
             if searchText.isEmpty {
-                let texts = ["Test", "Test2"]
-                
-                ForEach(texts, id: \.self) { suggestion in
-                    Text(suggestion)
-                        .searchCompletion(suggestion)
-                }
+                Text("Cafe").searchCompletion("Cafe")
+                Text("Thai").searchCompletion("Thai")
             }
-        })
+        }
         .onChange(of: searchText) { oldValue, newValue in
-            let predicate = #Predicate<Restaurant> {
-                $0.name.contains(newValue) || $0.location.contains(newValue)
+            let predicate = #Predicate<Restaurant> { $0.name.localizedStandardContains(newValue) ||
+                $0.location.localizedStandardContains(newValue)
             }
             
-            let descriptor = FetchDescriptor(predicate: predicate)
-            
+            let descriptor = FetchDescriptor<Restaurant>(predicate: predicate)
+        
             if let result = try? modelContext.fetch(descriptor) {
                 searchResult = result
             }
         }
-        .sheet(isPresented: $showWalkthrough, content: {
-            TutorialView()
-        })
-        .onAppear() {
-            showWalkthrough = hasViewedWalkthrough ? false : true
-        }
+  
     }
     
     private func deleteRecord(indexSet: IndexSet) {

@@ -1,16 +1,24 @@
+//
+//  RestaurantCloudStore.swift
+//  FoodPin
+//
+//  Created by Simon Ng on 15/11/2023.
+//
+
 import CloudKit
 import SwiftUI
 
-//@Observable class RestaurantCloudStore {
 @Observable class RestaurantCloudStore {
+    
     var restaurants: [CKRecord] = []
     
     func fetchRestaurants() async throws {
+        // Fetch data using Convenience API
         let cloudContainer = CKContainer.default()
         let publicDatabase = cloudContainer.publicCloudDatabase
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Restaurant", predicate: predicate)
-       
+        
         let results = try await publicDatabase.records(matching: query)
         
         for record in results.matchResults {
@@ -18,21 +26,24 @@ import SwiftUI
         }
     }
     
-    func fetchRestaurantWithOperational(completion: @escaping () -> ()) {
+    func fetchRestaurantsWithOperational(completion: @escaping () -> ()) {
+        // Fetch data using Operational API
         let cloudContainer = CKContainer.default()
         let publicDatabase = cloudContainer.publicCloudDatabase
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Restaurant", predicate: predicate)
-        query.sortDescriptors = [ NSSortDescriptor(key: "creationDate", ascending: false)]
+        query.sortDescriptors = [ NSSortDescriptor(key: "creationDate", ascending: false) ]
         
+        // Create the query operation with the query
         let queryOperation = CKQueryOperation(query: query)
-        queryOperation.desiredKeys = ["name", "image"]
+        queryOperation.desiredKeys = ["name", "image", "type", "location", "description"]
         queryOperation.queuePriority = .veryHigh
         queryOperation.resultsLimit = 50
         queryOperation.recordMatchedBlock = { (recordID, result) -> Void in
             if let _ = self.restaurants.first(where: { $0.recordID == recordID }) {
                 return
             }
+            
             if let restaurant = try? result.get() {
                 DispatchQueue.main.async {
                     self.restaurants.append(restaurant)
@@ -51,6 +62,7 @@ import SwiftUI
             }
         }
         
+        // Execute the query
         publicDatabase.add(queryOperation)
     }
     
@@ -67,11 +79,11 @@ import SwiftUI
         // Resize the image
         let originalImage = restaurant.image
         let scalingFactor = (originalImage.size.width > 1024) ? 1024 / originalImage.size.width : 1.0
-
+        
         guard let imageData = originalImage.pngData() else {
             return
         }
-
+        
         let scaledImage = UIImage(data: imageData, scale: scalingFactor)!
 
         // Write the image to local file for temporary use

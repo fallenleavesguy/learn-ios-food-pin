@@ -2,13 +2,13 @@
 //  AboutView.swift
 //  FoodPin
 //
-//  Created by donghs on 2024/3/17.
+//  Created by Simon Ng on 17/10/2023.
 //
 
 import SwiftUI
 
 struct AboutView: View {
-    @State private var link: WebLink?
+    
     enum WebLink: String, Identifiable {
         case rateUs = "https://www.apple.com/ios/app-store"
         case feedback = "https://www.appcoda.com/contact"
@@ -20,6 +20,8 @@ struct AboutView: View {
             UUID()
         }
     }
+    
+    @State private var link: WebLink?
     
     var body: some View {
         NavigationStack {
@@ -39,11 +41,11 @@ struct AboutView: View {
                             link = .feedback
                         }
                 }
-                
+
                 Section {
                     Label("Twitter", image: "twitter")
                         .onTapGesture {
-                            link = .facebook
+                            link = .twitter
                         }
                     
                     Label("Facebook", image: "facebook")
@@ -58,13 +60,14 @@ struct AboutView: View {
                 }
             }
             .listStyle(.grouped)
+            
             .navigationTitle("About")
             .navigationBarTitleDisplayMode(.automatic)
-            .sheet(item: $link) { item in
-                if let url = URL(string: item.rawValue) {
-                    SafariView(url: url)
-                        .ignoresSafeArea()
-                }
+             
+        }
+        .sheet(item: $link) { item in
+            if let url = URL(string: item.rawValue) {
+                SafariView(url: url)
             }
         }
     }
