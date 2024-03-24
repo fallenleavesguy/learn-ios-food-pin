@@ -18,7 +18,7 @@ import SwiftUI
         }
     }
     
-    func fetchRestaurantWithOperational() {
+    func fetchRestaurantWithOperational(completion: @escaping () -> ()) {
         let cloudContainer = CKContainer.default()
         let publicDatabase = cloudContainer.publicCloudDatabase
         let predicate = NSPredicate(value: true)
@@ -29,6 +29,9 @@ import SwiftUI
         queryOperation.queuePriority = .veryHigh
         queryOperation.resultsLimit = 50
         queryOperation.recordMatchedBlock = { (recordID, result) -> Void in
+            if let _ = self.restaurants.first(where: { $0.recordID == recordID }) {
+                return
+            }
             if let restaurant = try? result.get() {
                 DispatchQueue.main.async {
                     self.restaurants.append(restaurant)
@@ -40,6 +43,10 @@ import SwiftUI
             switch result {
             case .success(let cursor): print("Successfully retrieve the data from iCloud.")
             case .failure(let error): print("Failed to get data from iCloud - \(error.localizedDescription)")
+            }
+            
+            DispatchQueue.main.async {
+                completion()
             }
         }
         
