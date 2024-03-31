@@ -181,7 +181,7 @@ struct BasicTextImageRow: View {
         .alert("Not yet available", isPresented: $showError) {
             Button("OK") {}
         } message: {
-            Text("Sorry, this feature is not available yet. Please retry later.")
+            Text("Sorry, this feature is not available yet. Please retry later.", comment: "The message displayed when a user selects to place a call to the restaurant.")
         }
         .sheet(isPresented: $showOptions) {
             
